@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     <title>Blog Post</title>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="{% static 'styles/base.css'%}">
+      <style>
+.dropdown .dropbtn {
+  border: none;
+  color:rgb(75, 49, 146); /* Important for vertical align on mobile phones */
+  cursor:pointer;
+  letter-spacing: 2px;
+}
+
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 5px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 3px 7px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+      </style>
+  </head>
+  <body>
+    <nav class="header">
+      <h1>
+        Code-Abe
+      </h1>
+      <ul class="nav-links">
+      
+        {% if user.is_authenticated %}
+          <li>           
+            <div class="dropdown">
+              <p class="dropbtn">Category
+                <i class="fa fa-caret-down"></i>
+              </p>
+              <div class="dropdown-content">
+                {% for list in id_menu %}
+                <a href="{% url 'category' list|slugify %}">{{ list }}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="{% url 'add_post' %}">AddPost</a>
+          </li>
+
+          <li>
+            <a href="{% url 'add_category' %}">Category</a>
+          </li>
+
+          <li>
+            <a href="{% url 'logout' %}">Logout</a>
+          </li>
+        {% endif %}
+
+        {% if not user.is_authenticated %}
+        <li>
+          <a href="{% url 'login' %}">Login</a>
+        </li>
+        <li>
+          <a href="{% url 'sign_up' %}">Sign Up</a>
+        </li>
+        {% endif %}
+      </ul>
+
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    {% block body %}
+    {% endblock %}
+    <script 
+      src="{% static 'styles/main.js' %}">
+    </script>
+  </body>
+</html>

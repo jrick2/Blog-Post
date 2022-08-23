@@ -1,0 +1,62 @@
+{% extends 'base.html' %} {% block title %}Article{% endblock %}
+
+{% block body %}
+<style>
+h1 {
+    color:rgb(114, 47, 134);
+}
+
+h6 {
+    color:rgb(114, 47, 134);
+}
+body {
+    color:white
+}
+title:hover {
+  opacity: 0.80
+}
+title:active {
+  opacity: 0.70
+}
+li {
+  list-style: none
+}
+small {
+    color:rgb(114, 47, 134);
+}
+small:hover {
+  opacity: 0.70
+}
+small:active {
+  opacity: 0.70
+}
+button {
+  background-color:rgb(114, 47, 134);
+  border-radius: 7px;
+  padding: 2px
+}
+button:hover {
+  opacity: 0.80;
+}
+button:active {
+  opacity: 0.70;
+}
+  </style>
+<h1>{{ post.title }}</h1> 
+<h6>By:
+    {{ post.author.first_name }} , 
+    {{ post.post_date }}
+</h6>
+
+<small><a href="{% url 'update_post' post.pk %}">Edit</a></small>
+<small><a href="{% url 'delete_post' post.pk %}">Delete</a></small>
+
+
+<br>
+<hr>
+{{ post.body|safe }}
+</br>
+</br>
+<a href="{% url 'home' %}">Back</a>
+
+{% endblock %}

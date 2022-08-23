@@ -1,0 +1,88 @@
+{% extends "base.html" %} {% block title %}Sign Up{% endblock %}
+
+{% block body %}
+  <style>
+  body {
+      background-color: rgb(12, 12, 12)
+  }
+  p {
+    font-size: 10px;
+    color: white
+  }
+  .container {
+    display: flex;
+    height: 72vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+    color: white;
+    font-size: 10px;
+    padding-bottom: 100px
+  }
+  .border {
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(61, 11, 77);
+    padding: 15px 30px 15px 30px;
+    border-radius: 10px;
+  }
+  .form {
+      border-radius: 20px;
+      border: none;
+      padding-left: 10px;
+      outline: none;
+      font-size: 10px;
+      list-style: none
+  }
+  input {
+    display: block;
+    width: 50vh;
+    font-family: sans-serif;
+    border-radius: 10px;
+    border: none;
+    padding-left: 10px;
+    
+  }
+  ul {
+    display: none;
+  }
+  .text {
+    display: flex;
+    justify-content: center;
+  }
+  .link {
+    padding-right: 3px;
+  }
+  .submit {
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    height: 20px;
+    width: 20vh;
+    transition: opacity 0.15s;
+  }
+  .submit:hover {
+    opacity: 0.80;
+  }
+  .submit:active {
+    opacity: 0.70;
+  }
+  </style>
+
+
+  <div class="container">
+    <div class="border">
+      <h1>Email Address</h1>
+      <form class="form" method="POST">
+        {% csrf_token %}
+            {{ form.as_p }}
+          <input class="submit" type="submit" value="Sign up">
+      </form>	
+    </div>
+  </div>
+  <p class="text">If you already have an account, <a class="link" href="{% url 'login' %}">login</a> instead.</p>
+{% endblock %}

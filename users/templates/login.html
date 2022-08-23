@@ -1,0 +1,66 @@
+{% extends "base.html" %} {% block title %}Sign Up{% endblock %}
+
+
+{% block body %}
+<style>
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 60vh;
+    margin-left: 210px;
+    margin-top: 50px;
+    color: white;
+    border-radius: 10px;
+    font-size: 10px;
+    padding-bottom: 100px;
+    padding-top: 20px;
+    background-color: rgb(61, 11, 77);
+}
+
+.login_link {
+    display: flex;
+    justify-content: center
+}
+input {
+    display: block;
+    outline: none;
+    border-radius: 10px;
+    padding-left: 10px;
+    border:none
+}
+.submit {
+    margin-top: 10px;
+    color: white;
+    background-color: rgb(12, 12, 12);
+    padding-right: 10px;
+}
+.submit:hover {
+    opacity: 0.80;
+}
+.submit:active {
+    opacity: 0.70;
+}
+.flash {
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+</style>
+<div class="container">
+    <h1>Login</h1>
+
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <label>Username</label>
+        <input type="text" name="username" >
+        <label>Password</label>
+        <input type="password" name="password" >
+        <input class="submit" type="submit" value="login">
+    </form>
+    {% if message %}
+        <div class="flash">{{ message }}</div>
+    {% endif %}
+</div>
+{% endblock %}
