@@ -45,14 +45,23 @@ small:active {
   <h1>Home Page</h1>
   <br>
   {% for post in object_list %}
+
       <li><a class="title" href="{% url 'article_detail' post.pk %}">
-          {{ post.title }}</a> - <a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a>            
+          {{ post.title }}</a> {{ post.author }} - {{ post.category }}
+          {% if user.is_authenticated %}
+            {% if user.id == post.author.id %}           
           <small><a href="{% url 'update_post' post.pk %}">(Edit)</a></small>
-          <small><a href="{% url 'delete_post' post.pk %}">(Delete)</a></small> </br>
+          <small><a href="{% url 'delete_post' post.pk %}">(Delete)</a></small>
+            {% endif %}
+          {% else %}
+            Not Authorize
+          {% endif %}
+          </br>
           </br>
         {{ post.body|slice:":40"|safe }}
           <hr>
       </li>
+
   {% endfor %}
 </div>
 

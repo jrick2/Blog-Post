@@ -8,15 +8,15 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="{% static 'styles/base.css'%}">
       <style>
-.dropdown .dropbtn {
+/* .dropdown .dropbtn {
   border: none;
-  color:rgb(75, 49, 146); /* Important for vertical align on mobile phones */
+  color:rgb(75, 49, 146); 
   cursor:pointer;
   letter-spacing: 2px;
 }
 
 
-/* Dropdown content (hidden by default) */
+
 .dropdown-content {
   display: none;
   position: absolute;
@@ -25,7 +25,7 @@
   z-index: 1;
 }
 
-/* Links inside the dropdown */
+
 .dropdown-content a {
   float: none;
   color: black;
@@ -35,37 +35,37 @@
   text-align: left;
 }
 
-/* Add a grey background color to dropdown links on hover */
+
 .dropdown-content a:hover {
   background-color: #ddd;
 }
 
-/* Show the dropdown menu on hover */
+
 .dropdown:hover .dropdown-content {
   display: block;
-}
+} */
       </style>
   </head>
   <body>
     <nav class="header">
       <h1>
-        Code-Abe
+        <a href="{% url 'home' %}">Code-Abe</a>
       </h1>
       <ul class="nav-links">
       
         {% if user.is_authenticated %}
-          <li>           
+          <!-- <li>           
             <div class="dropdown">
               <p class="dropbtn">Category
                 <i class="fa fa-caret-down"></i>
               </p>
               <div class="dropdown-content">
-                {% for list in id_menu %}
+                 {% for list in id_menu %}
                 <a href="{% url 'category' list|slugify %}">{{ list }}</a>
-                {% endfor %}
+                {% endfor %} 
               </div>
             </div>
-          </li>
+          </li> -->
           <li>
             <a href="{% url 'add_post' %}">AddPost</a>
           </li>

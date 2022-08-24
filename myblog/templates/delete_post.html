@@ -24,6 +24,8 @@ button:active {
 
 </style>
 <div class="container">
+  {% if user.is_authenticated %}
+    {% if user.id == post.author.id %}
     <h1>Delete Post...</h1>
 </br>
 
@@ -34,6 +36,8 @@ button:active {
     <small>Are You Sure?</small>
     <button>Delete</button>
     <a href="{% url 'home' %}">Back</a>
+    {% endif %}
+  {% endif %}
 </div>
 
 {% endblock %}

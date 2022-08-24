@@ -1,52 +1,27 @@
 {% extends 'base.html' %}
-{% block body %}
-<style>
-  .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column; 
-}
-h1 {
-  color: white;
-}
-h6 {
-    color:rgb(114, 47, 134);
-}
-body {
-    color:white
-}
+{% block content %}
 
-li {
-  list-style: none
-}
-small {
-    color:rgb(114, 47, 134);
-}
-small:hover {
-  opacity: 0.70
-}
-small:active {
-  opacity: 0.70
-}
-</style>
-  <div class="container">
-    <br>
-    <br>
-    <h1>{{ id }} Category</h1>
-    {{ id_menu }}
-    <br>
-    
+{% if category_posts %}
+
+
+  <h1>{{ id }}</h1>
+
+
+  <ul>
     {% for post in category_posts %}
-            {{ post.title }}</a>         
-            <small><a href="{% url 'update_post' post.pk %}">(Edit)</a></small>
-            <small><a href="{% url 'delete_post' post.pk %}">(Delete)</a></small> </br>
-            </br>
-          {{ post.body|slice:":40"|safe }}
-            <hr>
-        </li>
-    {% endfor %}
-    <a href="{% url 'home' %}">Back</a>
-  </div>
+  <l1><a href="{% url 'article_detail' post.pk %}">{{ post.title }}</a>
+    {{ post.category }}
+     | {{ post.author }}
+     {% if user.is_authenticated %}
+     |-<small><a href="{% url 'update_post' post.pk %}">Редакт..)</a></small>
+     {% endif %}
+     <br/>{{ post.body|slice:":50"|safe }}
+   </l1>
+   {% endfor %}
+   </ul>
 
+
+ {% else %}
+ <h1>Извините страница не найдена</h1>
+ {% endif %}
 {% endblock %}

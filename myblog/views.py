@@ -14,28 +14,28 @@ class HomeView(ListView):
     ordering = ['-post_date']
     # ordering = ['-id']
     
-    def get_context_data(self, *args, **kwargs):
-        id_menu = Category.objects.all()
-        context = super(HomeView, self).get_context_data(*args, **kwargs)
-        context['id_menu'] = id_menu
-        return context
+    # def get_context_data(self, *args, **kwargs):
+    #     id_menu = Category.objects.all()
+    #     context = super(HomeView, self).get_context_data(*args, **kwargs)
+    #     context['id_menu'] = id_menu
+    #     return context
 
 
 class Article_DetailView(DetailView):
     model = Post
     template_name = 'article_detail.html'
 
-    def get_context_data(self, *args, **kwargs):
-        id_menu = Category.objects.all()
-        context = super(Article_DetailView, self).get_context_data(*args, **kwargs)
-        context['id_menu'] = id_menu
-        return context
+    # def get_context_data(self, *args, **kwargs):
+    #     id_menu = Category.objects.all()
+    #     context = super(Article_DetailView, self).get_context_data(*args, **kwargs)
+    #     context['id_menu'] = id_menu
+    #     return context
 
-def CategoryView(request, id):
-    category_posts = Post.objects.filter(category=id.replace('-', ' '))
-    return render(request, "category.html", {
-        'id' : id.title().replace('-', ' '), 'category_posts': category_posts
-    })
+# def CategoryView(request, id):
+#     category_posts = Post.objects.filter(category=id.replace('-', ' '))
+#     return render(request, "category.html", {
+#         'id' : id.title().replace('-', ' '), 'category_posts': category_posts
+#     })
 
 class Add_PostView(CreateView):
     model = Post

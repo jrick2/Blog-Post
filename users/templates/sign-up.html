@@ -2,9 +2,6 @@
 
 {% block body %}
   <style>
-  body {
-      background-color: rgb(12, 12, 12)
-  }
   p {
     font-size: 10px;
     color: white
@@ -26,10 +23,16 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgb(61, 11, 77);
     padding: 15px 30px 15px 30px;
     border-radius: 10px;
   }
+
+  .h1 {
+    color: white;
+    padding-right: 200px
+    
+  }
+
   .form {
       border-radius: 20px;
       border: none;
@@ -63,6 +66,7 @@
     border-radius: 20px;
     height: 20px;
     width: 20vh;
+    margin-top: 5px ;
     transition: opacity 0.15s;
   }
   .submit:hover {
@@ -76,7 +80,7 @@
 
   <div class="container">
     <div class="border">
-      <h1>Email Address</h1>
+      <h1 class="h1">Email Address</h1>
       <form class="form" method="POST">
         {% csrf_token %}
             {{ form.as_p }}
@@ -84,5 +88,5 @@
       </form>	
     </div>
   </div>
-  <p class="text">If you already have an account, <a class="link" href="{% url 'login' %}">login</a> instead.</p>
+
 {% endblock %}

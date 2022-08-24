@@ -21,13 +21,16 @@ button:active {
   
   </style>
 <div class="container">
-    
+    {% if user.is_authenticated %}
+      {% if user.id == post.author.id %}
     <form method="POST">
       <h1>Update Post...</h1>
         {% csrf_token %}
         {{ form.as_p }}
         <button>Update</button>
         <a href="{% url 'home' %}">Back</a>
+      {% endif %}
+    {% endif %}
 </div>
 
 {% endblock %}
