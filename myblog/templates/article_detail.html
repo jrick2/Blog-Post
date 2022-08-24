@@ -61,5 +61,24 @@ button:active {
 </br>
 </br>
 <a href="{% url 'home' %}">Back</a>
+<br><br>
+<hr>
+<br>
+{% if user.is_authenticated %}
+  <form action="{% url 'like_post' post.pk %}" method="POST">
+    {% csrf_token %}
+    {% if liked %}
+      <small>
+        <button type="submit" name="post_id" value="{{ post.id }}">Unlikes</button>
+      </small>
+      <small>
+      
+    {% else %}
+        <button type="submit" name="post_id" value="{{ post.id }}">Like</button>
+      </small>
+    {% endif %}
 
+  </form>
+{% endif %}
+ {{ total_likes }} Likes
 {% endblock %}

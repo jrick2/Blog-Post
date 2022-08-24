@@ -60,12 +60,12 @@
                 <i class="fa fa-caret-down"></i>
               </p>
               <div class="dropdown-content">
-                 {% for list in id_menu %}
-                <a href="{% url 'category' list|slugify %}">{{ list }}</a>
+                {% for list in id_menu %}
                 {% endfor %} 
               </div>
             </div>
           </li> -->
+
           <li>
             <a href="{% url 'add_post' %}">AddPost</a>
           </li>

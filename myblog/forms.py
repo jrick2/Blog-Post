@@ -14,5 +14,7 @@ class PostForm(forms.ModelForm):
         fields = ("title", "title_tag", "author","category", "body")
 
         widgets = {
-            'category': forms.Select(choices=choice_list)
+            'category': forms.Select(choices=choice_list),
+            "author": forms.TextInput(attrs={'id': 'author', 'value': '', 'type': 'hidden'})
+
         }
