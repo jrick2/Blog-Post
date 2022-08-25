@@ -1,8 +1,3 @@
-# I tried to debug my previeus code that works the first time but got outdated or something.
-# well it's also a test for me to know the extent of my problem solving skill and  yeah the result is 
-# if it Works it works -\_('')_/-
-# Add disclaimer i already know the 3 types of creating a user authentication
-
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.http import HttpResponseRedirect

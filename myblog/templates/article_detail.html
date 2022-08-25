@@ -44,7 +44,7 @@ button:active {
 </style>
 <h1>{{ post.title }}</h1> 
 <h6>By:
-    {{ post.author.first_name }} , 
+    {{ post.author }} , 
     {{ post.post_date }}
 </h6>
 {% if user.is_authenticated %}
@@ -52,8 +52,6 @@ button:active {
     <small><a href="{% url 'update_post' post.pk %}">Edit</a></small>
     <small><a href="{% url 'delete_post' post.pk %}">Delete</a></small>
   {% endif %}
-{% else %}
-  Not Authorize
 {% endif %}
 <br>
 <hr>

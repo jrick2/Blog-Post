@@ -1,7 +1,7 @@
 from django.urls import path
 from users import views
 from myblog.views import HomeView, Article_DetailView, Add_PostView, Update_PostView, Delete_PostView, Add_CategoryView, LikeView, CategoryView
-
+from users import forms
 urlpatterns = [
     # path("", views.home, name="home")
     path("", HomeView.as_view(), name="home"),
@@ -15,4 +15,6 @@ urlpatterns = [
     path("category/", Add_CategoryView.as_view(), name="add_category"),
     path("like/<int:pk>", LikeView , name="like_post"),
     path("category/<str:id>/", CategoryView, name="category"),
+    path('edit_profile/', forms.UserEditView.as_view(), name="edit_profile")
+
 ]

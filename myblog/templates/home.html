@@ -2,10 +2,8 @@
 {% block body %}
 <style>
   .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column; 
+    margin-left: 20px;
+    margin-right: 20px;
 }
 .title {
     color:rgb(114, 47, 134);
@@ -56,7 +54,7 @@ small:active {
           {% endif %}
           </br>
           </br>
-        {{ post.body|slice:":40"|safe }}
+        {{ post.body|slice:":80"|safe }}
           <hr>
       </li>
 

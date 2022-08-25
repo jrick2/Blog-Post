@@ -22,6 +22,7 @@
 <div class="container">
   <form method="POST">
     {% csrf_token %}
+    {{ form.media }}
     {{ form.as_p }}
     <button>Add</button>
     <a href="{% url 'home' %}">Back</a>

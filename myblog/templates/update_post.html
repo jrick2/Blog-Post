@@ -26,6 +26,7 @@ button:active {
     <form method="POST">
       <h1>Update Post...</h1>
         {% csrf_token %}
+        {{ form.media }}
         {{ form.as_p }}
         <button>Update</button>
         <a href="{% url 'home' %}">Back</a>
